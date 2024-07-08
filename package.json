@@ -1,0 +1,95 @@
+{
+  "name": "vite-plugin-collector",
+  "version": "0.1.0",
+  "description": "collector the intermediate state of Vite plugins",
+  "packageManager": "pnpm@8.14.3",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": {
+        "default": "./dist/index.mjs"
+      },
+      "require": {
+        "default": "./dist/index.cjs"
+      }
+    },
+    "./*": "./*"
+  },
+  "main": "dist/index.cjs",
+  "module": "dist/index.mjs",
+  "engines": {
+    "node": ">=16"
+  },
+  "scripts": {
+    "build": "rimraf dist && run-s build:* && esno ./scripts/postbuild.js",
+    "build:client": "vite build src/client",
+    "build:js": "unbuild",
+    "dev": "unbuild --stub && cross-env INSPECT_DEV=true vite src/client",
+    "dev:client": "vite build src/client --watch",
+    "stub": "unbuild --stub",
+    "lint": "eslint .",
+    "typecheck": "vue-tsc --noEmit",
+    "prepublishOnly": "npm run build",
+    "release": "bumpp && npm publish"
+  },
+  "peerDependencies": {
+    "vite": "^3.1.0 || ^4.0.0 || ^5.0.0-0"
+  },
+  "keywords": [],
+  "author": "yognfeng.wang@uni-orange.com",
+  "license": "MIT",
+  "devDependencies": {
+    "@antfu/eslint-config": "^2.6.3",
+    "@headlessui/vue": "^1.7.21",
+    "@rushstack/eslint-patch": "^1.8.0",
+    "@vitejs/plugin-vue": "^5.0.4",
+    "@vitejs/plugin-vue-jsx": "^3.1.0",
+    "@vue/compiler-sfc": "^3.4.15",
+    "@vue/eslint-config-prettier": "^9.0.0",
+    "@vue/test-utils": "^2.4.5",
+    "@vueuse/core": "^10.9.0",
+    "@vueuse/router": "^10.7.2",
+    "autoprefixer": "^10.4.19",
+    "daisyui": "^4.11.1",
+    "dependency-cruiser": "^12.12.2",
+    "enhanced-resolve": "^5.16.1",
+    "eslint": "^8.57.0",
+    "eslint-plugin-vue": "^9.23.0",
+    "fast-glob": "^3.3.2",
+    "filesize": "^10.1.1",
+    "jsdom": "^24.0.0",
+    "kolorist": "^1.8.0",
+    "loadsh": "^0.0.4",
+    "npm-run-all": "^4.1.5",
+    "perfect-debounce": "^1.0.0",
+    "pinia": "^2.1.7",
+    "pnpapi": "^0.0.0",
+    "postcss": "^8.4.38",
+    "prettier": "^3.2.5",
+    "radash": "^12.1.0",
+    "rimraf": "^5.0.5",
+    "safe-regex": "^2.1.1",
+    "sirv": "^2.0.4",
+    "tailwindcss": "^3.4.3",
+    "unbuild": "^2.0.0",
+    "unplugin-auto-import": "^0.17.5",
+    "unplugin-vue-components": "^0.27.0",
+    "unplugin-vue-router": "^0.8.6",
+    "vite": "^5.2.8",
+    "vite-dev-rpc": "^0.1.4",
+    "vite-hot-client": "^0.2.3",
+    "vite-plugin-vue-devtools": "^7.0.25",
+    "vitest": "^1.4.0",
+    "vue": "^3.4.15",
+    "vue-echarts": "^6.6.8",
+    "vue-router": "^4.2.5",
+    "vue-template-compiler": "^2.7.16",
+    "vue-tsc": "^1.8.27",
+    "webpack-cli": "^5.1.4",
+    "webpack-spritesmith": "^1.1.0"
+  },
+  "dependencies": {
+    "cross-env": "^7.0.3",
+    "esno": "^4.7.0"
+  }
+}

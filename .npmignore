@@ -1,0 +1,13 @@
+node_modules/
+.vscode
+.cache
+scripts/
+src/
+playground/
+build.config.js
+.prettierrc
+eslint.config.js
+jsconfig.json
+pnpm-workspace.yaml
+postcss.config.cjs
+tailwind.config.js
